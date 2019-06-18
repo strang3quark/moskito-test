@@ -86,6 +86,12 @@ public class CustomerController {
     	customerService.deleteCustomer(customer);
     	return new ResponseEntity<>(HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/customers/setup", method = RequestMethod.GET)
+    public ResponseEntity<Void> fill() {
+    	customerService.setupCustomers();
+    	return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 
     /**
      * 

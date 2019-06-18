@@ -3,7 +3,6 @@ package com.stl.crm.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 import com.stl.crm.domain.Customer;
 
@@ -76,8 +75,7 @@ public class CustomerService {
 	 * set up a few customers on the startup
 	 * 
 	 */
-	@PostConstruct
-	private void setupCustomers() {
+	public void setupCustomers() {
 		customerList = new ArrayList<Customer>();
 		Customer customer = new Customer();
 		customer.setId(1);
