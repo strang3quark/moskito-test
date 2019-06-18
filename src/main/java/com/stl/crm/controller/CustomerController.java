@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.stl.crm.domain.Customer;
 import com.stl.crm.service.CustomerService;
 
+import net.anotheria.moskito.aop.annotation.Monitor;
+
 @RestController
 public class CustomerController {
 	
@@ -27,6 +29,7 @@ public class CustomerController {
      * HTTP method: GET
      * 
      */	
+	@Monitor
 	@RequestMapping(value="/customers", method = RequestMethod.GET)
 	public ResponseEntity<?> getCustomers() {
 		List<Customer> customerList = customerService.getCustomers();
@@ -87,6 +90,7 @@ public class CustomerController {
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
+    @Monitor
     @RequestMapping(value = "/customers/setup", method = RequestMethod.GET)
     public ResponseEntity<Void> fill() {
     	customerService.setupCustomers();
@@ -100,6 +104,7 @@ public class CustomerController {
      * HTTP method: GET
      * 
      */
+    @Monitor
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<?> home() {
     	return new ResponseEntity<>("CRM REST API - Base 1", HttpStatus.OK);
